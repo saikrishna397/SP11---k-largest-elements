@@ -127,7 +127,7 @@ public class Select {
     public static int select(Comparable[] arr, int p, int n, int k) throws Exception {
         int q, left, right;
         if (n < THRESHOLD) {
-            insertionSort(arr);
+            insertionSort(arr, p, p + n - 1);
             return 0;
         } else {
             q = randomizedPartition(arr, p, p + n - 1);
