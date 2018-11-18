@@ -2,6 +2,7 @@
 
 package ixs171130;
 
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Iterator;
 
@@ -69,7 +70,31 @@ public class BinaryHeap<T extends Comparable<? super T>> {
      * Assume that k is small enough to fit in memory, but the stream is arbitrarily large.
      * If stream has less than k elements return null.
      */
-    public static <T extends Comparable<? super T>> T kthLargest(Iterator<T> stream, T[] arr, Comparator<T> c) throws Exception {
+    public static <T extends Comparable<? super T>> Comparable<T> kthLargest(Iterator<T> stream, T[] arr, Comparator<T> c) throws Exception {
+        Comparable<T>[] res = (Comparable<T>[]) kLargest(stream, arr, c);
+        return res[res.length - 1];
+    }
+
+    /**
+     * Return the kth largest element of stream using natural ordering.
+     * Assume that k is small enough to fit in memory, but the stream is arbitrarily large.
+     * If stream has less than k elements return null.
+     */
+    public static <T extends Comparable<? super T>> T kthLargest(Iterator<T> stream, T[] arr) throws Exception {
+        return (T) kthLargest(stream, arr, Comparator.naturalOrder());
+    }
+
+    /**
+     * Return an array with k largest elements from a stream
+     *
+     * @param stream Iterator
+     * @param arr    Array of size k
+     * @param c      Comparator
+     * @param <T>    Type
+     * @return Array with k largest elements
+     * @throws Exception
+     */
+    public static <T extends Comparable<? super T>> Comparable<? super T>[] kLargest(Iterator<T> stream, T[] arr, Comparator<T> c) throws Exception {
         BinaryHeap<T> b = new BinaryHeap<>(arr, c);
 
         // put first k elements into the heap
@@ -91,16 +116,15 @@ public class BinaryHeap<T extends Comparable<? super T>> {
             b.replace(x);
         }
 
-        return b.peek();
+        Comparable[] res;
+        res = Arrays.copyOf(b.pq, k);
+        Arrays.sort(res);
+
+        return res;
     }
 
-    /**
-     * Return the kth largest element of stream using natural ordering.
-     * Assume that k is small enough to fit in memory, but the stream is arbitrarily large.
-     * If stream has less than k elements return null.
-     */
-    public static <T extends Comparable<? super T>> T kthLargest(Iterator<T> stream, T[] arr) throws Exception {
-        return kthLargest(stream, arr, (T a, T b) -> a.compareTo(b));
+    public static <T extends Comparable<? super T>> Comparable<? super T>[] kLargest(Iterator<T> stream, T[] arr) throws Exception {
+        return kLargest(stream, arr, Comparator.naturalOrder());
     }
 
     public void add(T x) throws Exception { /* throw exception if pq is full */

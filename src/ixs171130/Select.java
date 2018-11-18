@@ -110,7 +110,7 @@ public class Select {
      * @param arr Input array
      * @param k   Number of elements
      */
-    public void select(Comparable[] arr, int k) throws Exception {
+    public static void select(Comparable[] arr, int k) throws Exception {
         select(arr, 0, arr.length, k);
     }
 
@@ -124,7 +124,7 @@ public class Select {
      * @return int
      * @throws Exception In case insertion sort gets wrong index values
      */
-    public int select(Comparable[] arr, int p, int n, int k) throws Exception {
+    public static int select(Comparable[] arr, int p, int n, int k) throws Exception {
         int q, left, right;
         if (n < THRESHOLD) {
             insertionSort(arr);
