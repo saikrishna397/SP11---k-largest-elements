@@ -1,13 +1,14 @@
 package ixs171130;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.Random;
 
 
 public class SP11Driver {
     public static Random random = new Random();
-    public static int numTrials = 100;
+    public static int numTrials = 10;
 
     public static void main(String[] args) throws Exception {
         int k = 0, size = 0;
@@ -49,7 +50,8 @@ public class SP11Driver {
                     Comparable[] res = new Comparable[k];
                     // our kthLargest method needs an iterator. Fastest method for array to iterator is converting to list
                     Iterator<Comparable> it = Arrays.asList(arr).iterator();
-                    BinaryHeap.kLargest(it, res);
+                    Comparator c = Comparator.reverseOrder();
+                    BinaryHeap.kLargest(it, res, c);
                 }
             default:
                 for (int i = 0; i < numTrials; i++) {
