@@ -1,4 +1,8 @@
-// Starter code for bounded-size Binary Heap implementation
+/*
+Authors:
+1. Ishan Sharma
+2. Sai Krishna Reddy
+ */
 
 package ixs171130;
 

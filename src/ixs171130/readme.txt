@@ -2,7 +2,7 @@ SP11: Select Algorithm
 
 Team Members:
 1. Ishan Sharma - ixs171130
-2. Sai Krishna Reddy -
+2. Sai Krishna Reddy - sxs169430
 
 Compiling/Running:
 
