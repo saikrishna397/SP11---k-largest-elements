@@ -41,7 +41,7 @@ public class SP11Driver {
                     System.out.print(arr[i] + " ");
                 System.out.println();
                 Select.select(arr, k);
-                for (int i = 0; i < k; i++)
+                for (int i = arr.length - k - 1; i < arr.length - 1; i++)
                     System.out.print(arr[i] + " ");
                 break;
             case 2:
